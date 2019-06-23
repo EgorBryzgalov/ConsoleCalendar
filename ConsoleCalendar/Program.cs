@@ -12,6 +12,7 @@ namespace ConsoleCalendar
         {
             Calendar cal = new Calendar();
             cal.GetInput();
+            cal.Print(cal.GetOutput());
             Console.ReadKey();
         }
     }
