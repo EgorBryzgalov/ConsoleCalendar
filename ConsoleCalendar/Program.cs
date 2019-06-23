@@ -10,6 +10,9 @@ namespace ConsoleCalendar
     {
         static void Main(string[] args)
         {
+            Calendar cal = new Calendar();
+            cal.GetInput("1");
+            Console.ReadKey();
         }
     }
 }
