@@ -11,7 +11,7 @@ namespace ConsoleCalendar
     {
         private DateTime Date { get; set; }
         
-        public void GetInput()
+        private void GetInput()
         {
             Console.WriteLine("Введите интерсующую Вас дату в формате: ДД ММ ГГГГ:");
             string input = Console.ReadLine();
@@ -35,9 +35,7 @@ namespace ConsoleCalendar
                     GetInput();
                     return;
                 }
-                Console.WriteLine(Date);
-                Console.WriteLine((int)Date.DayOfWeek);
-
+                
             }
             else
             {
@@ -55,7 +53,7 @@ namespace ConsoleCalendar
                 
         }
     
-        public string[] GetOutput()
+        private string[] GetOutput()
         {
             string[] output = new string[7];
             int DaysInMonth = DateTime.DaysInMonth(Date.Year, Date.Month);
@@ -91,10 +89,15 @@ namespace ConsoleCalendar
                    
                 }
             }
+            int day = Date.Day;
+            int index = (int)Date.DayOfWeek;
+            string OldString = " " + day.ToString() + " ";
+            string NewString = "[" + day.ToString() + "]";
+            output[index] = output[index].Replace(OldString, NewString);
             return output;
         }
 
-        public void Print(string[] output)
+        private void Print(string[] output)
         {
             Console.WriteLine("mon" + output[1]);
             Console.WriteLine("tue" + output[2]);
@@ -103,6 +106,12 @@ namespace ConsoleCalendar
             Console.WriteLine("fri" + output[5]);
             Console.WriteLine("sat" + output[6]);
             Console.WriteLine("sun" + output[0]);
+        }
+
+        public void Activate()
+        {
+            GetInput();
+            Print(GetOutput());
         }
     }
 }
